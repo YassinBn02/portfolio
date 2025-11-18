@@ -2,5 +2,10 @@ services:
   - type: web
     name: portfolio
     env: node
-    buildCommand: npm install --legacy-peer-deps && npm run build
+    buildCommand: npm install --force && npm run build
     staticPublishPath: ./out
+    node:
+      version: 18.x
+    build:
+      useYarn: false
+      usePnpm: false
