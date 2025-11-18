@@ -3,8 +3,7 @@ services:
     name: portfolio
     env: node
     buildCommand: |
-      npm config set package-lock false
-      rm -f pnpm-lock.yaml
+      rm -rf node_modules
       npm install --force
       npm run build
     staticPublishPath: ./out
@@ -13,3 +12,8 @@ services:
     build:
       useYarn: false
       usePnpm: false
+    envVars:
+      - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: "true"
+      - key: NPM_CONFIG_FORCE
+        value: "true"
