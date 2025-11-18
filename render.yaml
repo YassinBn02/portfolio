@@ -2,7 +2,11 @@ services:
   - type: web
     name: portfolio
     env: node
-    buildCommand: npm install --force && npm run build
+    buildCommand: |
+      npm config set package-lock false
+      rm -f pnpm-lock.yaml
+      npm install --force
+      npm run build
     staticPublishPath: ./out
     node:
       version: 18.x
