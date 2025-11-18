@@ -1,19 +1,11 @@
 services:
   - type: web
     name: portfolio
-    env: node
+    env: static
     buildCommand: |
       rm -rf node_modules
-      npm install --force
+      npm install --legacy-peer-deps
       npm run build
     staticPublishPath: ./out
     node:
       version: 18.x
-    build:
-      useYarn: false
-      usePnpm: false
-    envVars:
-      - key: NPM_CONFIG_LEGACY_PEER_DEPS
-        value: "true"
-      - key: NPM_CONFIG_FORCE
-        value: "true"
