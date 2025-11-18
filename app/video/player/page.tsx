@@ -1,122 +1,25 @@
-// // app/video/wistia/[id]/page.tsx
-// 'use client'
-
-// import { useRouter } from 'next/navigation'
-// import { X } from 'lucide-react'
-// import { useEffect, useState } from 'react'
-
-// // This function tells Next.js which paths should be pre-rendered at build time
-// export async function generateStaticParams() {
-//   // Return an array of objects with the dynamic parameters for each route
-//   // that should be pre-rendered
-//   return [
-//     { id: 'eem6coiyge' },  // Rafle
-//     { id: 'zkwzgjm9wm' },  // Tanit
-//     { id: '2qk583xmki' }   // Spot Delice
-//   ]
-// }
-
-// export default function WistiaPlayer() {
-//   const router = useRouter()
-//   const [videoId, setVideoId] = useState('')
-//   const [isLoading, setIsLoading] = useState(true)
-
-//   useEffect(() => {
-//     // Get the ID from the URL path directly on the client side
-//     const id = typeof window !== 'undefined' ? window.location.pathname.split('/').pop() : ''
-    
-//     if (id) {
-//       setVideoId(id)
-//       setIsLoading(false)
-//     } else {
-//       setIsLoading(false)
-//     }
-//   }, [])
-
-//   if (isLoading) {
-//     return (
-//       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-//         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-//       </div>
-//     )
-//   }
-
-//   if (!videoId) {
-//     return (
-//       <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white text-center p-4">
-//         <h2 className="text-2xl font-bold mb-4">Video Not Found</h2>
-//         <p className="mb-6">The requested video could not be loaded.</p>
-//         <button
-//           onClick={() => router.push('/')}
-//           className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
-//         >
-//           Return Home
-//         </button>
-//       </div>
-//     )
-//   }
-
-//   const embedUrl = `https://fast.wistia.net/embed/iframe/${videoId}?autoplay=1`
-
-//   return (
-//     <div className="fixed inset-0 bg-black z-50">
-//       <div className="fixed top-4 left-4 z-10">
-//         <button
-//           onClick={() => router.back()}
-//           className="flex items-center text-white hover:text-gray-300 transition-colors bg-black/50 p-2 rounded-full"
-//           aria-label="Close video"
-//         >
-//           <X className="w-6 h-6" />
-//         </button>
-//       </div>
-      
-//       <div className="flex items-center justify-center w-full h-full">
-//         <div className="w-full max-w-6xl h-[80vh] px-4">
-//           <div className="w-full h-full">
-//             <iframe
-//               src={embedUrl}
-//               allow="autoplay; fullscreen"
-//               allowFullScreen
-//               className="w-full h-full"
-//               frameBorder="0"
-//               scrolling="no"
-//               title="Wistia Video Player"
-//             ></iframe>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
 'use client'
 
-import { Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-function VideoPlayerContent() {
+export default function WistiaPlayer({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const videoPath = searchParams.get('video')
-  const isWistia = videoPath?.includes('wistia.com')
+  const [videoId, setVideoId] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
-  const getWistiaVideoId = (url: string) => {
-    const match = url.match(/medias\/([a-z0-9]+)/i)
-    return match ? match[1] : null
-  }
-
-  const wistiaVideoId = isWistia && videoPath ? getWistiaVideoId(videoPath) : null
-  const wistiaEmbedUrl = wistiaVideoId 
-    ? `https://fast.wistia.net/embed/iframe/${wistiaVideoId}?autoplay=1`
-    : ''
-
   useEffect(() => {
-    setIsLoading(false)
-  }, [videoPath])
+    // Use a small timeout to ensure params are available
+    const timer = setTimeout(() => {
+      if (params?.id) {
+        setVideoId(params.id)
+      }
+      setIsLoading(false)
+    }, 0)
+
+    return () => clearTimeout(timer)
+  }, [params?.id])
 
   if (isLoading) {
     return (
@@ -126,20 +29,15 @@ function VideoPlayerContent() {
     )
   }
 
-  if (!videoPath) {
+  if (!videoId) {
     return (
-      <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white text-center p-4">
-        <h2 className="text-2xl font-bold mb-4">Video Not Found</h2>
-        <p className="mb-6">No video was specified.</p>
-        <button
-          onClick={() => router.push('/')}
-          className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
-        >
-          Return Home
-        </button>
+      <div className="fixed inset-0 bg-black z-50 flex items-center justify-center text-white">
+        Video not found
       </div>
     )
   }
+
+  const embedUrl = `https://fast.wistia.net/embed/iframe/${videoId}?autoplay=1`
 
   return (
     <div className="fixed inset-0 bg-black z-50">
@@ -155,43 +53,19 @@ function VideoPlayerContent() {
       
       <div className="flex items-center justify-center w-full h-full">
         <div className="w-full max-w-6xl h-[80vh] px-4">
-          {isWistia ? (
-            <div className="w-full h-full">
-              <iframe
-                src={wistiaEmbedUrl}
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                className="w-full h-full"
-                frameBorder="0"
-                scrolling="no"
-                title="Wistia Video Player"
-              ></iframe>
-            </div>
-          ) : (
-            <video
-              src={videoPath}
+          <div className="w-full h-full">
+            <iframe
+              src={embedUrl}
+              allow="autoplay; fullscreen"
+              allowFullScreen
               className="w-full h-full"
-              controls
-              autoPlay
-              playsInline
-            >
-              Your browser does not support the video tag.
-            </video>
-          )}
+              frameBorder="0"
+              scrolling="no"
+              title="Wistia Video Player"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
-
-export default function VideoPlayer() {
-  return (
-    <Suspense fallback={
-      <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-      </div>
-    }>
-      <VideoPlayerContent />
-    </Suspense>
   )
 }
