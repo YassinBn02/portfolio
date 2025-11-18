@@ -2,10 +2,7 @@ services:
   - type: web
     name: portfolio
     env: static
-    buildCommand: |
-      rm -rf node_modules
-      npm install --legacy-peer-deps
-      npm run build
+    buildCommand: npm ci && npm run build
     staticPublishPath: ./out
     node:
-      version: 18.x
+      version: 20.x
