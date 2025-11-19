@@ -75,9 +75,11 @@ export default function Home() {
       </div>
 
       <div className="px-4 md:px-8 py-12 space-y-16" id="photos-section">
-        {categories.map((category) => (
-          <CategorySection key={category.id} category={category} />
-        ))}
+        {categories
+          .filter((category) => category.id !== "videos")
+          .map((category) => (
+            <CategorySection key={category.id} category={category} />
+          ))}
       </div>
     </main>
   )

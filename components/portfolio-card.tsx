@@ -70,7 +70,7 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <div className="relative w-full pt-[75%]">
+      <div className="relative w-full pt-[200%]">
         <Image
           src={item.image || "/placeholder.svg"}
           alt={item.title}
