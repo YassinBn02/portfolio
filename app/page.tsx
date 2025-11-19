@@ -3,9 +3,27 @@
 import { useState } from "react"
 import CategorySection from "@/components/category-section"
 import Hero from "@/components/hero"
+import HomeGalleryMenu from "@/components/HomeGalleryMenu"
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+
+  const titleToHref: Record<string, string> = {
+    "Ken Ya Makanach": "/ken-ya-makanach",
+    "Fragment of live": "/fragment-of-live",
+    "Jo Malon": "/jo-malon",
+    "Le bout de la mer": "/bout-de-la-mer",
+    "Lucidream": "/lucidream",
+    "may b": "/may-b",
+    "noubet gharam": "/noubet-gharam",
+    "Orange": "/orange",
+    "Rafle": "/rafle",
+    "Salam": "/salam",
+    "Salwa": "/salwa",
+    "Spot Delice": "/spot-delice",
+    "Where the wind comes from": "/where-the-wind-comes-from",
+    "Tanit": "/tanit",
+  }
 
   const categories = [
     {
@@ -44,6 +62,17 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
+
+      {/* Top gallery carousel menu under the explorer/Hero */}
+      <div className="px-4 md:px-8 pt-6">
+        <HomeGalleryMenu
+          items={(categories[0]?.items || []).map((item) => ({
+            id: item.id,
+            title: item.title,
+            href: titleToHref[item.title] ?? "#",
+          }))}
+        />
+      </div>
 
       <div className="px-4 md:px-8 py-12 space-y-16" id="photos-section">
         {categories.map((category) => (

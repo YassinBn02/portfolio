@@ -123,4 +123,22 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Prevent text caret from showing on clickable UI (links/buttons) */
+  a, button, [role="button"], .no-caret {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    caret-color: transparent;
+  }
+  /* Broadly remove caret and selection from everything except inputs/textarea/contenteditable */
+  :where(*):not(input):not(textarea):not([contenteditable="true"]) {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    caret-color: transparent;
+  }
+  /* Optional: prevent selection highlight from appearing */
+  ::selection {
+    background: transparent;
+  }
 }
