@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PortfolioCard from "./portfolio-card"
 
 interface CategorySectionProps {
@@ -19,8 +19,16 @@ interface CategorySectionProps {
 
 export default function CategorySection({ category }: CategorySectionProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  const displayedItems = isExpanded ? category.items : category.items.slice(0, 6)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(typeof window !== 'undefined' && window.innerWidth < 640)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const displayedItems = category.items
 
   return (
     <section className="space-y-4">
@@ -29,7 +37,7 @@ export default function CategorySection({ category }: CategorySectionProps) {
         <p className="text-muted-foreground text-lg">{category.description}</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
         {displayedItems.map((item) => (
           <PortfolioCard 
             key={item.id} 
@@ -42,24 +50,6 @@ export default function CategorySection({ category }: CategorySectionProps) {
           />
         ))}
       </div>
-
-      {category.items.length > 6 && !isExpanded && (
-        <button
-          onClick={() => setIsExpanded(true)}
-          className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/90 transition-colors mt-8"
-        >
-          Voir plus
-        </button>
-      )}
-
-      {isExpanded && category.items.length > 6 && (
-        <button
-          onClick={() => setIsExpanded(false)}
-          className="px-6 py-3 bg-muted text-muted-foreground rounded-lg font-semibold hover:bg-muted/80 transition-colors mt-8"
-        >
-          Voir moins
-        </button>
-      )}
     </section>
   )
 }

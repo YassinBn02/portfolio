@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface GalleryModalProps {
@@ -11,6 +12,10 @@ interface GalleryModalProps {
   images: string[];
   initialIndex?: number;
 }
+
+const getImageUrl = (image: string) => {
+  return `/images/${image}`;
+};
 
 function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -32,7 +37,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
-        <DialogTitle className="sr-only">Ken Ya Makanach Gallery</DialogTitle>
+        <DialogTitle className="sr-only">Tanit Gallery</DialogTitle>
         <div className="relative w-full h-full">
           <button
             onClick={onClose}
@@ -41,11 +46,10 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
           <div className="relative w-full h-[80vh]">
             <Image
-              src={`/Ken Ya Makanach/${images[currentIndex]}`}
-              alt={`Ken Ya Makanach ${currentIndex + 1}`}
+              src={getImageUrl(images[currentIndex])}
+              alt={`Tanit ${currentIndex + 1}`}
               fill
               className="object-contain"
               priority
@@ -79,67 +83,54 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
   );
 }
 
-export default function KenYaMakanachGallery() {
+export default function TanitGallery() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  // List of images from the Ken Ya Makanach folder
-  const kenYaMakanachImages = [
-    '4ec51146-5426-4b46-8afe-c79e7f55e2a3 - copia.jpeg',
-    '173507912_10227311512113216_4645507778149017221_n.jpg',
-    '277530811_10158848135412616_4567132115097189539_n.jpg',
-    '277583295_10158847429177616_8734465017008893907_n.jpg',
-    '277587101_10158847429197616_8281877272981055827_n.jpg',
-    '277778725_10158847429182616_1260924532532422940_n.jpg',
-    '277792884_10158847429172616_1112012869513344447_n.jpg',
-    '277795545_10158851027677616_4804376373641650961_n.jpg',
-    '277798403_10158858393707616_8647319820138494427_n.jpg',
-    '277800871_10158855482207616_2199295335355645841_n.jpg',
-    '277991941_10158843522502616_3330149995407809204_n.jpg',
-    '278441344_10158854059872616_2949644131999317386_n.jpg',
-    '278489154_10158857914767616_1445923939465616330_n.jpg',
-    '278671469_10158858393617616_6665752856445024971_n.jpg',
-    '469375783_929059532504609_230151008395075808_n.jpg',
-    '469441361_929059419171287_5816902094337395349_n.jpg',
-    '469477929_929059522504610_7901229805640376043_n.jpg',
+  const tanitImages = [
+    'tanit-thumbnail.jpg',
   ];
+
+  const tanitVideoUrl = 'https://yassinbn02.wistia.com/medias/zkwzgjm9wm';
+  const handleOpenVideo = () => {
+    const videoId = tanitVideoUrl.split('/').pop();
+    if (videoId) router.push(`/video/wistia/${videoId}`);
+  };
 
   const openModal = (index: number) => {
     setSelectedIndex(index);
     setIsOpen(true);
   };
 
-  if (kenYaMakanachImages.length === 0) {
-    return <div className="text-center py-12">No images found</div>;
-  }
+  
 
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {kenYaMakanachImages.map((image, index) => (
-          <div 
-            key={image} 
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
-            onClick={() => openModal(index)}
-          >
-            <Image
-              src={`/Ken Ya Makanach/${image}`}
-              alt={`Ken Ya Makanach ${index + 1}`}
-              fill
-              className="object-cover rounded-lg"
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
-              priority={index < 4}
-            />
+        {/* Video tile */}
+        <div
+          className="aspect-square relative cursor-pointer group"
+          onClick={handleOpenVideo}
+        >
+          <Image
+            src={getImageUrl('tanit-thumbnail.jpg')}
+            alt="Tanit Video"
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+            <div className="flex flex-col items-center text-white">
+              <Play className="w-10 h-10 mb-2" />
+              <span className="font-semibold">Lire la vidéo</span>
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
-        images={kenYaMakanachImages}
-        initialIndex={selectedIndex}
-      />
+        
+      </div>
     </div>
   );
 }

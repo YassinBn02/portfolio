@@ -101,6 +101,7 @@ export default function WhereTheWindComesFromGallery() {
 
   // List of images from the "Where the wind comes from" folder
   const windImages = [
+    'Imagen de WhatsApp 2025-10-27 a las 14.04.31_c5bd3dd9.jpg',
     '608d28cb-9f05-4cb4-bd44-ba77237a18ec.JPG',
     '88b1109c-3b46-41c1-ab01-230bc44d439e - copia.JPG',
     'Capture d’écran 2024-11-17 à 10.45.37.png',
@@ -108,7 +109,6 @@ export default function WhereTheWindComesFromGallery() {
     'Capture d’écran 2024-11-17 à 11.12.32.png',
     'Capture d’écran 2025-10-28 à 09.52.36.png',
     'Capture d’écran 2025-10-28 à 10.18.04.png',
-    'Imagen de WhatsApp 2025-10-27 a las 14.04.31_c5bd3dd9.jpg',
     'c3b02b1d-ee1c-485e-830c-7f35f3409027.JPG',
     'd8a55c56-d3cb-4004-9a96-7c9baf07aab0.JPG'
   ];

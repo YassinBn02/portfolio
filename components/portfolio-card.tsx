@@ -48,6 +48,8 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
       router.push('/noubet-gharam')
     } else if (item.title === "Orange") {
       router.push('/orange')
+    } else if (item.title === "Tanit") {
+      router.push('/tanit')
     } else if (item.title === "Rafle") {
       router.push('/rafle')
     } else if (item.title === "Salam") {

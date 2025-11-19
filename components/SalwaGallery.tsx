@@ -90,8 +90,7 @@ export default function SalwaGallery() {
 
   // List of images from the Salwa folder
   const salwaImages = [
-    'Affiche_Salwa.jpg',
-    'MV5BNGZlMDJjMmMtYzg3Yy00ZjE0LWI1MjgtNDkzMzYwN2Y3YTc4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'
+    'Affiche_Salwa.jpg'
   ];
 
   const openModal = (index: number) => {

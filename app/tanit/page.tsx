@@ -1,8 +1,8 @@
-import OrangeGallery from "@/components/OrangeGallery"
+import TanitGallery from "@/components/TanitGallery"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-export default function OrangePage() {
+export default function TanitPage() {
   return (
     <main className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
@@ -14,10 +14,10 @@ export default function OrangePage() {
             <ArrowLeft className="w-6 h-6 mr-2" />
             Retour
           </Link>
-          <h1 className="text-4xl font-bold text-center flex-grow">Orange</h1>
-          <div className="w-10"></div> {/* Spacer to balance the layout */}
+          <h1 className="text-4xl font-bold text-center flex-grow">Tanit</h1>
+          <div className="w-10"></div>
         </div>
-        <OrangeGallery />
+        <TanitGallery />
       </div>
     </main>
   )

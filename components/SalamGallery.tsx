@@ -90,6 +90,7 @@ export default function SalamGallery() {
 
   // List of images from the Salam folder
   const salamImages = [
+    'imed jemaa.jpg',
     '289270163_5371895469584966_8729664244014082593_n.jpg',
     '417517721_299001909821862_8473622876638282867_n.jpg',
     'IMG_0384.jpg',
@@ -97,7 +98,6 @@ export default function SalamGallery() {
     'IMG_0412.jpg',
     'IMG_0439.jpg',
     'IMG_0448.jpg',
-    'imed jemaa.jpg'
   ];
 
   const openModal = (index: number) => {

@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface GalleryModalProps {
@@ -85,6 +86,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
 }
 
 export default function RafleGallery() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -113,6 +115,12 @@ export default function RafleGallery() {
     'Untitled_2.87.2.jpg'
   ];
 
+  const rafleVideoUrl = 'https://yassinbn02.wistia.com/medias/eem6coiyge';
+  const handleOpenVideo = () => {
+    const videoId = rafleVideoUrl.split('/').pop();
+    if (videoId) router.push(`/video/wistia/${videoId}`);
+  };
+
   const openModal = (index: number) => {
     setSelectedIndex(index);
     setIsOpen(true);
@@ -125,6 +133,27 @@ export default function RafleGallery() {
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Video tile */}
+        <div
+          className="aspect-square relative cursor-pointer group"
+          onClick={handleOpenVideo}
+        >
+          <Image
+            src={getImageUrl('Untitled_1.1538.2.jpg')}
+            alt="Rafle Video"
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+            <div className="flex flex-col items-center text-white">
+              <Play className="w-10 h-10 mb-2" />
+              <span className="font-semibold">Lire la vidéo</span>
+            </div>
+          </div>
+        </div>
+
         {rafleImages.map((image, index) => (
           <div 
             key={image} 
