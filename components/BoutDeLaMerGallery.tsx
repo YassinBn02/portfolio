@@ -40,7 +40,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={`/Le bout de la mer/${images[currentIndex]}`}
@@ -84,7 +84,7 @@ export default function BoutDeLaMerGallery() {
 
   // List of images from the Le bout de la mer folder
   const boutDeLaMerImages = [
-    '1716370780_acb2e67a1544cc4032c7_large.jpg',
+
     '486257615_1051730896985318_2735232583631722714_n.jpg',
     '486297435_1051731223651952_7385355442988319699_n.jpg',
     '493587773_1464536598269439_8453190041871966227_n.jpg',
@@ -110,8 +110,8 @@ export default function BoutDeLaMerGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {boutDeLaMerImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -127,9 +127,9 @@ export default function BoutDeLaMerGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={boutDeLaMerImages}
         initialIndex={selectedIndex}
       />

@@ -28,7 +28,7 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
         return;
       }
     }
-    
+
     // For other video paths
     if (item.videoPath) {
       router.push(`/video/player?video=${encodeURIComponent(item.videoPath)}`)
@@ -69,8 +69,9 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
+      suppressHydrationWarning
     >
-      <div className="relative w-full pt-[200%]">
+      <div className="relative w-full pt-[125%]" suppressHydrationWarning>
         <Image
           src={item.image || "/placeholder.svg"}
           alt={item.title}
@@ -80,18 +81,18 @@ export default function PortfolioCard({ item }: PortfolioCardProps) {
       </div>
 
       <div
-        className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 transition-opacity duration-300 ${
-          isHovered ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        suppressHydrationWarning
       >
         <h3 className="text-white font-semibold text-lg mb-2 text-balance">{item.title}</h3>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" suppressHydrationWarning>
           <Play className="w-4 h-4 text-accent fill-accent" />
           <span className="text-sm text-white/80">Voir détails</span>
         </div>
       </div>
 
-      <div className="absolute inset-0 border border-border/50 rounded-lg pointer-events-none" />
+      <div className="absolute inset-0 border border-border/50 rounded-lg pointer-events-none" suppressHydrationWarning />
     </div>
   )
 }

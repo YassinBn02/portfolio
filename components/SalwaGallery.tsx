@@ -46,7 +46,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={getImageUrl(images[currentIndex])}
@@ -90,7 +90,7 @@ export default function SalwaGallery() {
 
   // List of images from the Salwa folder
   const salwaImages = [
-    'Affiche_Salwa.jpg'
+    ''
   ];
 
   const openModal = (index: number) => {
@@ -106,8 +106,8 @@ export default function SalwaGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {salwaImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -123,9 +123,9 @@ export default function SalwaGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={salwaImages}
         initialIndex={selectedIndex}
       />

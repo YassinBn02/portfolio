@@ -32,21 +32,18 @@ export default function CategorySection({ category }: CategorySectionProps) {
 
   return (
     <section className="space-y-4">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">{category.title}</h2>
-        <p className="text-muted-foreground text-lg">{category.description}</p>
-      </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
+
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6" suppressHydrationWarning>
         {displayedItems.map((item) => (
-          <PortfolioCard 
-            key={item.id} 
+          <PortfolioCard
+            key={item.id}
             item={{
               id: item.id,
               title: item.title,
               image: item.image,
               videoPath: item.videoPath
-            }} 
+            }}
           />
         ))}
       </div>

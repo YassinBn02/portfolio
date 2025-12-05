@@ -4,11 +4,13 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
+import Footer from "@/components/footer"
+
 const _geistSans = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "v0 App",
+  title: "Emna Bouaoun",
   description: "Created with v0",
   generator: "v0.app",
   icons: {
@@ -36,9 +38,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
-      <body className="font-sans antialiased" suppressHydrationWarning={true}>
+    <html lang="fr" suppressHydrationWarning>
+      <body className="font-sans antialiased min-h-screen flex flex-col" suppressHydrationWarning={true}>
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>

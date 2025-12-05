@@ -50,7 +50,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={getImageUrl(images[currentIndex])}
@@ -101,7 +101,7 @@ export default function WhereTheWindComesFromGallery() {
 
   // List of images from the "Where the wind comes from" folder
   const windImages = [
-    'Imagen de WhatsApp 2025-10-27 a las 14.04.31_c5bd3dd9.jpg',
+
     '608d28cb-9f05-4cb4-bd44-ba77237a18ec.JPG',
     '88b1109c-3b46-41c1-ab01-230bc44d439e - copia.JPG',
     'Capture d’écran 2024-11-17 à 10.45.37.png',
@@ -134,8 +134,8 @@ export default function WhereTheWindComesFromGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {windImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -151,9 +151,9 @@ export default function WhereTheWindComesFromGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={windImages}
         initialIndex={selectedIndex}
       />

@@ -41,7 +41,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={`/Fragment of live/${images[currentIndex]}`}
@@ -85,7 +85,7 @@ export default function FragmentOfLiveGallery() {
 
   // List of images from the Fragment of live folder
   const fragmentOfLiveImages = [
-    'poster_9231.jpg',
+
     '472658340_122126487464578442_7069631177666414333_n.jpg',
     '472781752_122126487518578442_7048697131041911116_n.jpg'
   ];
@@ -103,8 +103,8 @@ export default function FragmentOfLiveGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {fragmentOfLiveImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -120,9 +120,9 @@ export default function FragmentOfLiveGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={fragmentOfLiveImages}
         initialIndex={selectedIndex}
       />

@@ -46,7 +46,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={getImageUrl(images[currentIndex])}
@@ -90,7 +90,6 @@ export default function SalamGallery() {
 
   // List of images from the Salam folder
   const salamImages = [
-    'imed jemaa.jpg',
     '289270163_5371895469584966_8729664244014082593_n.jpg',
     '417517721_299001909821862_8473622876638282867_n.jpg',
     'IMG_0384.jpg',
@@ -113,8 +112,8 @@ export default function SalamGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {salamImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -130,9 +129,9 @@ export default function SalamGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={salamImages}
         initialIndex={selectedIndex}
       />

@@ -41,7 +41,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={`/Ken Ya Makanach/${images[currentIndex]}`}
@@ -85,7 +85,6 @@ export default function KenYaMakanachGallery() {
 
   // List of images from the Ken Ya Makanach folder
   const kenYaMakanachImages = [
-    '4ec51146-5426-4b46-8afe-c79e7f55e2a3 - copia.jpeg',
     '173507912_10227311512113216_4645507778149017221_n.jpg',
     '277530811_10158848135412616_4567132115097189539_n.jpg',
     '277583295_10158847429177616_8734465017008893907_n.jpg',
@@ -117,8 +116,8 @@ export default function KenYaMakanachGallery() {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {kenYaMakanachImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -134,9 +133,9 @@ export default function KenYaMakanachGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={kenYaMakanachImages}
         initialIndex={selectedIndex}
       />
