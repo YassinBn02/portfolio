@@ -88,6 +88,14 @@ export default function TanitGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "TANIT",
+    year: "2024",
+    choreographer: "Kais Chouibi", // Changed to show choreographer explicitly or just as director label if preferred, using director styling for consistency
+    role: "Costume Designer",
+  };
+
   const tanitImages = [
     'tanit-thumbnail.jpg',
   ];
@@ -103,10 +111,29 @@ export default function TanitGallery() {
     setIsOpen(true);
   };
 
-  
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+            {projectInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.choreographer}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {/* Video tile */}
         <div
@@ -129,7 +156,7 @@ export default function TanitGallery() {
           </div>
         </div>
 
-        
+
       </div>
     </div>
   );

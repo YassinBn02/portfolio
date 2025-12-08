@@ -46,7 +46,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={getImageUrl(images[currentIndex])}
@@ -88,6 +88,14 @@ export default function MayBGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "MAY B",
+    year: "2023",
+    choreographer: "Maguy Marin",
+    role: "Costume Replica",
+  };
+
   // List of images from the may b folder
   const mayBImages = [
     '475442515_924754456445662_3822544371269994327_n.jpg',
@@ -112,10 +120,30 @@ export default function MayBGallery() {
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+            {projectInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.choreographer}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {mayBImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -131,9 +159,9 @@ export default function MayBGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={mayBImages}
         initialIndex={selectedIndex}
       />

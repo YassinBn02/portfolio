@@ -88,6 +88,14 @@ export default function SalwaGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "SALWA",
+    year: "2021",
+    director: "Ines Ben Othmen",
+    role: "Wardrobe Assistant",
+  };
+
   // List of images from the Salwa folder
   const salwaImages = [
     ''
@@ -98,12 +106,55 @@ export default function SalwaGallery() {
     setIsOpen(true);
   };
 
-  if (salwaImages.length === 0) {
-    return <div className="text-center py-12">No images found</div>;
+  if (salwaImages.length === 0 || (salwaImages.length === 1 && salwaImages[0] === '')) {
+    return (
+      <div className="container mx-auto px-4">
+        {/* Project Details Header */}
+        <div className="flex flex-col items-center mb-16 space-y-6">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+              {projectInfo.title}
+            </h1>
+            <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+          </div>
+
+          <div className="flex flex-col items-center space-y-2">
+            <p className="text-xl md:text-2xl font-light text-center">
+              {projectInfo.director}
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+            <p>Role: {projectInfo.role}</p>
+          </div>
+        </div>
+        <div className="text-center py-12">No images found</div>
+      </div>
+    );
   }
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+            {projectInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.director}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {salwaImages.map((image, index) => (
           <div

@@ -83,6 +83,14 @@ export default function KenYaMakanachGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "KEN YA MAKENCH",
+    director: "Abdelhamid Bouchnak",
+    role: "Wardrobe assistant",
+    trailerUrl: "https://www.youtube.com/embed/-22VyioH1uo",
+  };
+
   // List of images from the Ken Ya Makanach folder
   const kenYaMakanachImages = [
     '173507912_10227311512113216_4645507778149017221_n.jpg',
@@ -114,6 +122,37 @@ export default function KenYaMakanachGallery() {
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center">
+          {projectInfo.title}
+        </h1>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.director}
+          </p>
+        </div>
+
+        {projectInfo.trailerUrl && (
+          <div className="w-full max-w-4xl aspect-video rounded-sm overflow-hidden shadow-xl my-8">
+            <iframe
+              width="100%"
+              height="100%"
+              src={projectInfo.trailerUrl}
+              title={`${projectInfo.title} Trailer`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        )}
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {kenYaMakanachImages.map((image, index) => (
           <div

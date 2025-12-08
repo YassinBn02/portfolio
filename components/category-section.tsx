@@ -14,6 +14,7 @@ interface CategorySectionProps {
       image: string
       videoPath?: string
     }>
+    rawTitle?: string
   }
 }
 
@@ -34,17 +35,19 @@ export default function CategorySection({ category }: CategorySectionProps) {
     <section className="space-y-4">
 
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6" suppressHydrationWarning>
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6" suppressHydrationWarning>
         {displayedItems.map((item) => (
-          <PortfolioCard
-            key={item.id}
-            item={{
-              id: item.id,
-              title: item.title,
-              image: item.image,
-              videoPath: item.videoPath
-            }}
-          />
+          <div key={item.id} className="w-[calc(33.333%-11px)] md:w-[calc(25%-18px)]">
+            <PortfolioCard
+              item={{
+                id: item.id,
+                title: item.title,
+                image: item.image,
+                videoPath: item.videoPath
+              }}
+              category={category.rawTitle}
+            />
+          </div>
         ))}
       </div>
     </section>

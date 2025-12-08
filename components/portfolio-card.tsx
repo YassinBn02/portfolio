@@ -12,54 +12,76 @@ interface PortfolioCardProps {
     image: string
     videoPath?: string
   }
+  category?: string
 }
 
-export default function PortfolioCard({ item }: PortfolioCardProps) {
+export default function PortfolioCard({ item, category }: PortfolioCardProps) {
   const router = useRouter()
   const [isHovered, setIsHovered] = useState(false)
 
   const handleClick = (e: React.MouseEvent) => {
+    // Helper to add category param
+    const getPath = (path: string) => category ? `${path}?category=${encodeURIComponent(category)}` : path;
+
     // Handle Wistia videos
     if (item.videoPath && item.videoPath.includes('wistia.com')) {
       e.preventDefault();
       const videoId = item.videoPath.split('/').pop();
       if (videoId) {
-        router.push(`/video/wistia/${videoId}`);
+        router.push(getPath(`/video/wistia/${videoId}`));
         return;
       }
     }
 
     // For other video paths
     if (item.videoPath) {
-      router.push(`/video/player?video=${encodeURIComponent(item.videoPath)}`)
+      router.push(getPath(`/video/player?video=${encodeURIComponent(item.videoPath)}`))
     } else if (item.title === "Ken Ya Makanach") {
-      router.push('/ken-ya-makanach')
+      router.push(getPath('/ken-ya-makanach'))
     } else if (item.title === "Fragment of live") {
-      router.push('/fragment-of-live')
+      router.push(getPath('/fragment-of-live'))
     } else if (item.title === "Jo Malon") {
-      router.push('/jo-malon')
+      router.push(getPath('/jo-malon'))
     } else if (item.title === "Le bout de la mer") {
-      router.push('/bout-de-la-mer')
+      router.push(getPath('/bout-de-la-mer'))
     } else if (item.title === "Lucidream") {
-      router.push('/lucidream')
+      router.push(getPath('/lucidream'))
     } else if (item.title === "may b") {
-      router.push('/may-b')
+      router.push(getPath('/may-b'))
     } else if (item.title === "noubet gharam") {
-      router.push('/noubet-gharam')
-    } else if (item.title === "Orange") {
-      router.push('/orange')
+      router.push(getPath('/noubet-gharam'))
+    } else if (item.title === "Spot Orange 2024") {
+      router.push(getPath('/orange'))
     } else if (item.title === "Tanit") {
-      router.push('/tanit')
+      router.push(getPath('/tanit'))
     } else if (item.title === "Rafle") {
-      router.push('/rafle')
+      router.push(getPath('/rafle'))
     } else if (item.title === "Salam") {
-      router.push('/salam')
+      router.push(getPath('/salam'))
     } else if (item.title === "Salwa") {
-      router.push('/salwa')
+      router.push(getPath('/salwa'))
     } else if (item.title === "Spot Delice") {
-      router.push('/spot-delice')
+      router.push(getPath('/spot-delice'))
     } else if (item.title === "Where the wind comes from") {
-      router.push('/where-the-wind-comes-from')
+      router.push(getPath('/where-the-wind-comes-from'))
+    } else if (item.title === "La Maison Dorée") {
+      router.push(getPath('/la-maison-doree'))
+    } else if (item.title === "Salla Salla") {
+      router.push(getPath('/salla-salla'))
+    } else if (item.title === "Spot Coca Cola Marroc") {
+      router.push(getPath('/spot-coca-cola-marroc'))
+    } else if (item.title === "Spot Suzuki") {
+      router.push(getPath('/spot-suzuki'))
+    } else if (item.title === "Spot Selja") {
+      router.push(getPath('/spot-selja'))
+    } else if (item.title === "Golden Coffee TVC1") {
+      router.push(getPath('/golden-coffee-tvc1'))
+    } else if (item.title === "Golden Coffee 2023") {
+      router.push(getPath('/golden-coffee-2023'))
+    } else if (item.title === "Spot Al Mazraa 2023") {
+      router.push(getPath('/spot-al-mazraa'))
+    } else if (item.title === "Orange 2022") {
+      router.push(getPath('/orange-2022'))
     }
   }
 

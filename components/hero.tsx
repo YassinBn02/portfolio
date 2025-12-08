@@ -14,7 +14,7 @@ export default function Hero() {
         {/* Logo at the top center */}
         <div className="flex justify-center pt-8" suppressHydrationWarning>
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             alt="Emna Bouaoun"
             className="h-24 md:h-32 lg:h-40 w-auto object-contain"
             style={{ mixBlendMode: 'multiply' }}

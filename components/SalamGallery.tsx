@@ -88,6 +88,15 @@ export default function SalamGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "SALAM",
+    year: "2023",
+    choreographer: "Imed Jemaa",
+    role: "Costume Designer",
+    trailerUrl: "https://www.youtube.com/embed/i7uY1sF5AeQ",
+  };
+
   // List of images from the Salam folder
   const salamImages = [
     '289270163_5371895469584966_8729664244014082593_n.jpg',
@@ -110,6 +119,41 @@ export default function SalamGallery() {
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+            {projectInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.choreographer}
+          </p>
+        </div>
+
+        {projectInfo.trailerUrl && (
+          <div className="w-full max-w-4xl aspect-video rounded-sm overflow-hidden shadow-xl my-8">
+            <iframe
+              width="100%"
+              height="100%"
+              src={projectInfo.trailerUrl}
+              title={`${projectInfo.title} Trailer`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        )}
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
+      {/* Gallery Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {salamImages.map((image, index) => (
           <div

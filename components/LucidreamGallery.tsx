@@ -52,7 +52,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={getImageUrl(images[currentIndex])}
@@ -94,6 +94,14 @@ export default function LucidreamGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Project Information
+  const projectInfo = {
+    title: "LUCIDREAM",
+    year: "2023",
+    creator: "Marwen Ben Cheikh",
+    role: "Costume Designer",
+  };
+
   // List of images from the Lucidream folder with original filenames
   const lucidreamImages = [
     '1.png',
@@ -116,10 +124,30 @@ export default function LucidreamGallery() {
 
   return (
     <div className="container mx-auto px-4">
+      {/* Project Details Header */}
+      <div className="flex flex-col items-center mb-16 space-y-6">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-center mb-2">
+            {projectInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl font-light text-muted-foreground">{projectInfo.year}</p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-xl md:text-2xl font-light text-center">
+            {projectInfo.creator}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Role: {projectInfo.role}</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {lucidreamImages.map((image, index) => (
-          <div 
-            key={image} 
+          <div
+            key={image}
             className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
@@ -135,9 +163,9 @@ export default function LucidreamGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={lucidreamImages}
         initialIndex={selectedIndex}
       />

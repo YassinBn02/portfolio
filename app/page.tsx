@@ -1,12 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import CategorySection from "@/components/category-section"
 import Hero from "@/components/hero"
 import HomeGalleryMenu from "@/components/HomeGalleryMenu"
 
-export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("Film")
+function HomeContent() {
+  const searchParams = useSearchParams()
+  const initialCategory = searchParams.get("category") || "Film"
+  const [activeCategory, setActiveCategory] = useState(initialCategory)
 
   // All available items
   const allItems = [
@@ -24,15 +27,24 @@ export default function Home() {
     { id: 15, title: "Spot Delice", image: "/spot delice/Délice Smoothie TVC emna.png" },
     { id: 16, title: "Where the wind comes from", image: "/Where the wind comes from/Imagen de WhatsApp 2025-10-27 a las 14.04.31_c5bd3dd9.jpg" },
     { id: 17, title: "Tanit", image: "/images/tanit-thumbnail.jpg" },
+    { id: 18, title: "La Maison Dorée", image: "/La Maison Dorée/cover.jpg" },
+    { id: 19, title: "Salla Salla", image: "Salla Salla/cover.jpg" },
+    { id: 20, title: "Spot Coca Cola Marroc", image: "/placeholder.svg" },
+    { id: 21, title: "Spot Suzuki", image: "/placeholder.svg" },
+    { id: 22, title: "Spot Selja", image: "/placeholder.svg" },
+    { id: 23, title: "Golden Coffee TVC1", image: "/placeholder.svg" },
+    { id: 24, title: "Golden Coffee 2023", image: "/placeholder.svg" },
+    { id: 25, title: "Spot Al Mazraa 2023", image: "/placeholder.svg" },
+    { id: 26, title: "Orange 2022", image: "/placeholder.svg" },
   ]
 
   // Mapping of categories to item titles
   const categoryMap: Record<string, string[]> = {
-    "Film": ["Where the wind comes from"],
-    "Series": ["Rafle", "Ken Ya Makanach"],
+    "Film": ["Where the wind comes from", "La Maison Dorée"],
+    "Series": ["Rafle", "Ken Ya Makanach", "Salla Salla"],
     "Short-film": ["Fragment of live", "Salwa"],
     "Theater": ["noubet gharam", "Tanit", "Salam", "Lucidream", "Le bout de la mer", "may b"],
-    "Commercials": ["Orange", "Jo Malon", "Spot Delice"],
+    "Commercials": ["Orange", "Jo Malon", "Spot Delice", "Spot Coca Cola Marroc", "Spot Suzuki", "Spot Selja", "Golden Coffee TVC1", "Golden Coffee 2023", "Spot Al Mazraa 2023", "Orange 2022"],
   }
 
   // Filter items based on active category
@@ -67,10 +79,19 @@ export default function Home() {
             id: activeCategory.toLowerCase(),
             title: "", // Empty title as requested previously
             description: "",
-            items: filteredItems
+            items: filteredItems,
+            rawTitle: activeCategory // Passing the raw title for the card to use
           }}
         />
       </div>
     </main>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-background"><Hero /></main>}>
+      <HomeContent />
+    </Suspense>
   )
 }
