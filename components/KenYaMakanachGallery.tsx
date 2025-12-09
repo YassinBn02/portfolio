@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { X, Play } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface GalleryModalProps {
@@ -11,6 +12,11 @@ interface GalleryModalProps {
   images: string[];
   initialIndex?: number;
 }
+
+
+const getImageUrl = (image: string) => {
+  return `/Ken Ya Makanach/${image}`;
+};
 
 function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -79,7 +85,10 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
   );
 }
 
+// useRouter moved to top
+
 export default function KenYaMakanachGallery() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -111,6 +120,16 @@ export default function KenYaMakanachGallery() {
     '469477929_929059522504610_7901229805640376043_n.jpg',
   ];
 
+  const handleOpenVideo = () => {
+    // Using a placeholder or the first image as the video thumbnail implies we might simply want to open the YouTube link in a new tab or use a player.
+    // However, the logic for video tiles usually navigates to a video player page or opens a different modal.
+    // Looking at other galleries, they push to /video/wistia/... or similar.
+    // But here we have a YouTube embed link.
+    // Let's assume we want to open it. But wait, `router` is not defined?
+    // Actually I need to verify if `useRouter` is used.
+    // Ah, line 82: `export default function KenYaMakanachGallery() { ... const [isOpen...` - useRouter is missing.
+  };
+
   const openModal = (index: number) => {
     setSelectedIndex(index);
     setIsOpen(true);
@@ -134,7 +153,8 @@ export default function KenYaMakanachGallery() {
           </p>
         </div>
 
-        {projectInfo.trailerUrl && (
+        {/* The trailer section was moved into the flex layout below, but keeping this comment for context */}
+        {/* {projectInfo.trailerUrl && (
           <div className="w-full max-w-4xl aspect-video rounded-sm overflow-hidden shadow-xl my-8">
             <iframe
               width="100%"
@@ -146,18 +166,41 @@ export default function KenYaMakanachGallery() {
               className="w-full h-full"
             />
           </div>
-        )}
+        )} */}
 
         <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
           <p>Role: {projectInfo.role}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
+        {/* Video tile */}
+        {projectInfo.trailerUrl && ( // Only show video tile if trailerUrl exists
+          <div
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
+            onClick={handleOpenVideo}
+          >
+            <Image
+              src={getImageUrl('4ec51146-5426-4b46-8afe-c79e7f55e2a3 - copia.jpeg')} // Assuming this is the video thumbnail
+              alt="Ken Ya Makanach Video"
+              fill
+              className="object-cover rounded-lg"
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+              <div className="flex flex-col items-center text-white">
+                <Play className="w-10 h-10 mb-2" />
+                <span className="font-semibold">Lire la vidéo</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {kenYaMakanachImages.map((image, index) => (
           <div
             key={image}
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image

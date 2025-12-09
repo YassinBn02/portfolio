@@ -40,7 +40,7 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
           >
             <X className="w-8 h-8" />
           </button>
-          
+
           <div className="relative w-full h-[80vh]">
             <Image
               src={`/Fragment of live/${images[currentIndex]}`}
@@ -100,11 +100,11 @@ export default function PaysagesGallery() {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {paysagesImages.map((image, index) => (
-          <div 
-            key={image} 
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
+          <div
+            key={image}
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image
@@ -119,9 +119,9 @@ export default function PaysagesGallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={paysagesImages}
         initialIndex={selectedIndex}
       />

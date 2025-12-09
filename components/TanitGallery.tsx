@@ -127,17 +127,16 @@ export default function TanitGallery() {
           <p className="text-xl md:text-2xl font-light text-center">
             {projectInfo.choreographer}
           </p>
-        </div>
-
-        <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
-          <p>Role: {projectInfo.role}</p>
+          <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+            <p>Role: {projectInfo.role}</p>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {/* Video tile */}
         <div
-          className="aspect-square relative cursor-pointer group"
+          className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
           onClick={handleOpenVideo}
         >
           <Image
@@ -155,9 +154,14 @@ export default function TanitGallery() {
             </div>
           </div>
         </div>
-
-
       </div>
+
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        images={tanitImages}
+        initialIndex={selectedIndex}
+      />
     </div>
   );
 }

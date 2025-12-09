@@ -50,7 +50,7 @@ export default function PortfolioCard({ item, category }: PortfolioCardProps) {
       router.push(getPath('/may-b'))
     } else if (item.title === "noubet gharam") {
       router.push(getPath('/noubet-gharam'))
-    } else if (item.title === "Spot Orange 2024") {
+    } else if (item.title === "Orange") {
       router.push(getPath('/orange'))
     } else if (item.title === "Tanit") {
       router.push(getPath('/tanit'))

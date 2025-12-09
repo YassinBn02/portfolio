@@ -140,11 +140,11 @@ export default function NoubetGharamGallery() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {noubetGharamImages.map((image, index) => (
           <div
             key={image}
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image

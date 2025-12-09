@@ -98,9 +98,7 @@ export default function LaMaisonDoreeGallery() {
     };
 
     // List of images from the La Maison Dorée folder
-    const laMaisonDoreeImages: string[] = [
-        'cover.jpeg'
-    ];
+    const laMaisonDoreeImages: string[] = [];
 
     const openModal = (index: number) => {
         setSelectedIndex(index);

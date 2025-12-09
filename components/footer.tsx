@@ -43,7 +43,7 @@ export default function Footer() {
                         </Link>
 
                         <a
-                            href="mailto:emnabc@gmail.com"
+                            href="mailto:emnabc@gmail.com?subject=Contact from Portfolio"
                             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
                         >
                             <div className="p-2 rounded-full bg-muted group-hover:bg-primary/10 transition-colors" suppressHydrationWarning>

@@ -43,11 +43,11 @@ export function Gallery() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {galleryImages.map((image, index) => (
-          <div 
-            key={image} 
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
+          <div
+            key={image}
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image
@@ -62,9 +62,9 @@ export function Gallery() {
         ))}
       </div>
 
-      <GalleryModal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <GalleryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         images={galleryImages}
         initialIndex={selectedIndex}
       />

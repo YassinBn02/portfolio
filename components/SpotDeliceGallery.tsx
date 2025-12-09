@@ -161,14 +161,14 @@ export default function SpotDeliceGallery() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {/* Video tile */}
         <div
-          className="aspect-square relative cursor-pointer group"
+          className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
           onClick={handleOpenVideo}
         >
           <Image
-            src={getImageUrl('Délice Smoothie TVC emna.png')}
+            src={getImageUrl(spotDeliceImages[0] || 'Délice Smoothie TVC emna.png')}
             alt="Spot Delice Video"
             fill
             className="object-cover rounded-lg"
@@ -186,7 +186,7 @@ export default function SpotDeliceGallery() {
         {spotDeliceImages.map((image, index) => (
           <div
             key={image}
-            className="aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image
