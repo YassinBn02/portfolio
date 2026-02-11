@@ -37,18 +37,18 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
+      <DialogContent className="max-w-screen max-h-screen w-screen h-screen m-0 rounded-none p-0 bg-black border-none sm:max-w-none sm:h-screen gap-0 p-0">
         <DialogTitle className="sr-only">Rafle Gallery</DialogTitle>
         <div className="relative w-full h-full">
           <button
             onClick={onClose}
-            className="absolute -top-10 right-0 text-white hover:text-gray-300 z-50"
+            className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
             aria-label="Close gallery"
           >
             <X className="w-8 h-8" />
           </button>
 
-          <div className="relative w-full h-[80vh]">
+          <div className="relative w-full h-screen">
             <Image
               src={getImageUrl(images[currentIndex])}
               alt={`Rafle ${currentIndex + 1}`}
@@ -96,7 +96,8 @@ export default function RafleGallery() {
     year: "2024",
     director: "Rabii Takeli",
     role: "Costume designer",
-    trailerUrl: "https://www.instagram.com/p/DGlM7eDt_ns/",
+    instagramTrailerUrl: "https://www.instagram.com/p/DGlM7eDt_ns/",
+    youtubeTrailerUrl: "https://www.youtube.com/embed/PSawwfyU3wY",
   };
 
   // List of images from the rafle folder (excluding the video file)
@@ -124,12 +125,6 @@ export default function RafleGallery() {
     'Untitled_2.87.2.jpg'
   ];
 
-  const rafleVideoUrl = 'https://yassinbn02.wistia.com/medias/eem6coiyge';
-  const handleOpenVideo = () => {
-    const videoId = rafleVideoUrl.split('/').pop();
-    if (videoId) router.push(`/video/wistia/${videoId}`);
-  };
-
   const openModal = (index: number) => {
     setSelectedIndex(index);
     setIsOpen(true);
@@ -156,10 +151,24 @@ export default function RafleGallery() {
           </p>
         </div>
 
-        {projectInfo.trailerUrl && (
-          <div className="my-8 text-center">
+        {projectInfo.youtubeTrailerUrl && (
+          <div className="w-full max-w-4xl aspect-video rounded-sm overflow-hidden shadow-xl my-8">
+            <iframe
+              width="100%"
+              height="100%"
+              src={projectInfo.youtubeTrailerUrl}
+              title={`${projectInfo.title} Trailer`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        )}
+
+        {projectInfo.instagramTrailerUrl && (
+          <div className="my-4 text-center">
             <a
-              href={projectInfo.trailerUrl}
+              href={projectInfo.instagramTrailerUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full hover:opacity-90 transition-opacity font-medium"
@@ -176,27 +185,6 @@ export default function RafleGallery() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-4">
-        {/* Video tile */}
-        <div
-          className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
-          onClick={handleOpenVideo}
-        >
-          <Image
-            src={getImageUrl('Untitled_1.1538.2.jpg')}
-            alt="Rafle Video"
-            fill
-            className="object-cover rounded-lg"
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-            <div className="flex flex-col items-center text-white">
-              <Play className="w-10 h-10 mb-2" />
-              <span className="font-semibold">Lire la vidéo</span>
-            </div>
-          </div>
-        </div>
-
         {rafleImages.map((image, index) => (
           <div
             key={image}

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X, Play } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface GalleryModalProps {
@@ -14,9 +13,7 @@ interface GalleryModalProps {
 }
 
 
-const getImageUrl = (image: string) => {
-  return `/Ken Ya Makanach/${image}`;
-};
+
 
 function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -37,18 +34,18 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
+      <DialogContent className="max-w-screen max-h-screen w-screen h-screen m-0 rounded-none p-0 bg-black border-none sm:max-w-none sm:h-screen gap-0 p-0">
         <DialogTitle className="sr-only">Ken Ya Makanach Gallery</DialogTitle>
         <div className="relative w-full h-full">
           <button
             onClick={onClose}
-            className="absolute -top-10 right-0 text-white hover:text-gray-300 z-50"
+            className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
             aria-label="Close gallery"
           >
             <X className="w-8 h-8" />
           </button>
 
-          <div className="relative w-full h-[80vh]">
+          <div className="relative w-full h-screen">
             <Image
               src={`/Ken Ya Makanach/${images[currentIndex]}`}
               alt={`Ken Ya Makanach ${currentIndex + 1}`}
@@ -88,7 +85,6 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
 // useRouter moved to top
 
 export default function KenYaMakanachGallery() {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -97,7 +93,7 @@ export default function KenYaMakanachGallery() {
     title: "KEN YA MAKENCH",
     director: "Abdelhamid Bouchnak",
     role: "Wardrobe assistant",
-    trailerUrl: "https://www.youtube.com/embed/-22VyioH1uo",
+    trailerUrl: "https://www.youtube.com/embed/vIGSxxnQvrc",
   };
 
   // List of images from the Ken Ya Makanach folder
@@ -119,16 +115,6 @@ export default function KenYaMakanachGallery() {
     '469441361_929059419171287_5816902094337395349_n.jpg',
     '469477929_929059522504610_7901229805640376043_n.jpg',
   ];
-
-  const handleOpenVideo = () => {
-    // Using a placeholder or the first image as the video thumbnail implies we might simply want to open the YouTube link in a new tab or use a player.
-    // However, the logic for video tiles usually navigates to a video player page or opens a different modal.
-    // Looking at other galleries, they push to /video/wistia/... or similar.
-    // But here we have a YouTube embed link.
-    // Let's assume we want to open it. But wait, `router` is not defined?
-    // Actually I need to verify if `useRouter` is used.
-    // Ah, line 82: `export default function KenYaMakanachGallery() { ... const [isOpen...` - useRouter is missing.
-  };
 
   const openModal = (index: number) => {
     setSelectedIndex(index);
@@ -153,8 +139,7 @@ export default function KenYaMakanachGallery() {
           </p>
         </div>
 
-        {/* The trailer section was moved into the flex layout below, but keeping this comment for context */}
-        {/* {projectInfo.trailerUrl && (
+        {projectInfo.trailerUrl && (
           <div className="w-full max-w-4xl aspect-video rounded-sm overflow-hidden shadow-xl my-8">
             <iframe
               width="100%"
@@ -166,7 +151,7 @@ export default function KenYaMakanachGallery() {
               className="w-full h-full"
             />
           </div>
-        )} */}
+        )}
 
         <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
           <p>Role: {projectInfo.role}</p>
@@ -174,29 +159,6 @@ export default function KenYaMakanachGallery() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-4">
-        {/* Video tile */}
-        {projectInfo.trailerUrl && ( // Only show video tile if trailerUrl exists
-          <div
-            className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
-            onClick={handleOpenVideo}
-          >
-            <Image
-              src={getImageUrl('4ec51146-5426-4b46-8afe-c79e7f55e2a3 - copia.jpeg')} // Assuming this is the video thumbnail
-              alt="Ken Ya Makanach Video"
-              fill
-              className="object-cover rounded-lg"
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33.33vw, 25vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-              <div className="flex flex-col items-center text-white">
-                <Play className="w-10 h-10 mb-2" />
-                <span className="font-semibold">Lire la vidéo</span>
-              </div>
-            </div>
-          </div>
-        )}
-
         {kenYaMakanachImages.map((image, index) => (
           <div
             key={image}

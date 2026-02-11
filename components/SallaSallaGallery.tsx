@@ -35,18 +35,18 @@ function GalleryModal({ isOpen, onClose, images, initialIndex = 0 }: GalleryModa
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
+            <DialogContent className="max-w-screen max-h-screen w-screen h-screen m-0 rounded-none p-0 bg-black border-none sm:max-w-none sm:h-screen gap-0 p-0">
                 <DialogTitle className="sr-only">Salla Salla Gallery</DialogTitle>
                 <div className="relative w-full h-full">
                     <button
                         onClick={onClose}
-                        className="absolute -top-10 right-0 text-white hover:text-gray-300 z-50"
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
                         aria-label="Close gallery"
                     >
                         <X className="w-8 h-8" />
                     </button>
 
-                    <div className="relative w-full h-[80vh]">
+                    <div className="relative w-full h-screen">
                         <Image
                             src={getImageUrl(images[currentIndex])}
                             alt={`Salla Salla ${currentIndex + 1}`}
@@ -98,7 +98,24 @@ export default function SallaSallaGallery() {
 
     // List of images from the Salla Salla folder
     const sallaSallaImages: string[] = [
-        // Add images here if available
+        'IMG-20250822-WA0015.jpg',
+        'IMG-20250822-WA0018.jpg',
+        'IMG-20250822-WA0019.jpg',
+        'IMG-20250822-WA0024.jpg',
+        'IMG-20250822-WA0029.jpg',
+        'IMG-20250822-WA0030.jpg',
+        'IMG-20250822-WA0033.jpg',
+        'IMG-20250822-WA0034.jpg',
+        'IMG-20250822-WA0103.jpg',
+        'IMG-20250822-WA0040.jpg',
+        'IMG-20250822-WA0045.jpg',
+        'IMG-20250822-WA0046.jpg',
+        'IMG-20250822-WA0056.jpg',
+        'IMG-20250822-WA0066.jpg',
+        'IMG-20250822-WA0068.jpg',
+        'IMG-20250822-WA0081.jpg',
+        'IMG-20250822-WA0097.jpg',
+        'IMG-20250822-WA0099.jpg'
     ];
 
     const openModal = (index: number) => {

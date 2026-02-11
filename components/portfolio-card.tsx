@@ -46,9 +46,9 @@ export default function PortfolioCard({ item, category }: PortfolioCardProps) {
       router.push(getPath('/bout-de-la-mer'))
     } else if (item.title === "Lucidream") {
       router.push(getPath('/lucidream'))
-    } else if (item.title === "may b") {
+    } else if (item.title === "May B") {
       router.push(getPath('/may-b'))
-    } else if (item.title === "noubet gharam") {
+    } else if (item.title === "Noubet Gharam") {
       router.push(getPath('/noubet-gharam'))
     } else if (item.title === "Orange") {
       router.push(getPath('/orange'))
@@ -98,7 +98,7 @@ export default function PortfolioCard({ item, category }: PortfolioCardProps) {
           src={item.image || "/placeholder.svg"}
           alt={item.title}
           fill
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className={`absolute inset-0 w-full h-full ${item.title === "Le bout de la mer" || item.title === "Lucidream" ? "object-contain bg-black" : "object-cover"} transition-transform duration-300 group-hover:scale-110`}
         />
       </div>
 

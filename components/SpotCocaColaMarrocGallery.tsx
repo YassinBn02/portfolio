@@ -66,7 +66,7 @@ export default function SpotCocaColaMarrocGallery() {
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full hover:opacity-90 transition-opacity font-medium"
                             >
                                 <Play className="w-4 h-4" fill="currentColor" />
-                                Watch Trailer on Vimeo
+                                Watch Spot on Vimeo
                             </a>
                         </div>
                     )}

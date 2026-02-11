@@ -18,10 +18,10 @@ function HomeContent() {
     { id: 3, title: "Jo Malon", image: "/Jo Malon/IMG-20251105-WA0003.jpg" },
     { id: 4, title: "Le bout de la mer", image: "/Le bout de la mer/1716370780_acb2e67a1544cc4032c7_large.jpg" },
     { id: 5, title: "Lucidream", image: "/Lucidream/1.png" },
-    { id: 6, title: "may b", image: "/may b/475442515_924754456445662_3822544371269994327_n.jpg" },
-    { id: 10, title: "noubet gharam", image: "/noubet gharam/480169077_1239155007578260_276561949140420097_n.jpg" },
+    { id: 6, title: "May B", image: "/may b/475442515_924754456445662_3822544371269994327_n.jpg" },
+    { id: 10, title: "Noubet Gharam", image: "/noubet gharam/480169077_1239155007578260_276561949140420097_n.jpg" },
     { id: 11, title: "Orange", image: "/orange 2024/Captura de pantalla 2025-11-05 104425.png" },
-    { id: 12, title: "Rafle", image: "/rafle/IMG-20250818-WA0206.jpg" },
+    { id: 12, title: "Rafle", image: "/rafle/MV5BMGM1MTI1NGQtNjMxZS00YmM5LThkYjAtNzlmNDk2ZTA0MzdmXkEyXkFqcGc@._V1_QL75_UY281_CR17,0,190,281_.jpg" },
     { id: 13, title: "Salam", image: "/Salam/imed jemaa.jpg" },
     { id: 14, title: "Salwa", image: "/Salwa/Affiche_Salwa.jpg" },
     { id: 15, title: "Spot Delice", image: "/spot delice/Délice Smoothie TVC emna.png" },
@@ -43,7 +43,7 @@ function HomeContent() {
     "Film": ["Where the wind comes from", "La Maison Dorée"],
     "Series": ["Rafle", "Ken Ya Makanach", "Salla Salla"],
     "Short-film": ["Fragment of live", "Salwa"],
-    "Theater": ["noubet gharam", "Tanit", "Salam", "Lucidream", "Le bout de la mer", "may b"],
+    "Theater": ["Noubet Gharam", "Tanit", "Salam", "Lucidream", "Le bout de la mer", "May B"],
     "Commercials": ["Orange", "Jo Malon", "Spot Delice", "Spot Coca Cola Marroc", "Spot Suzuki", "Spot Selja", "Golden Coffee TVC1", "Golden Coffee 2023", "Spot Al Mazraa 2023", "Orange 2022"],
   }
 
