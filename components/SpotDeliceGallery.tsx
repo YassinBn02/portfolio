@@ -163,7 +163,7 @@ export default function SpotDeliceGallery() {
 
       <div className="flex flex-wrap justify-center gap-4">
         {/* Video tile */}
-        <div
+        {/* <div
           className="w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] aspect-square relative cursor-pointer group"
           onClick={handleOpenVideo}
         >
@@ -181,7 +181,7 @@ export default function SpotDeliceGallery() {
               <span className="font-semibold">Lire la vidéo</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {spotDeliceImages.map((image, index) => (
           <div

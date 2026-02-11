@@ -15,7 +15,7 @@ function HomeContent() {
   const allItems = [
     { id: 1, title: "Ken Ya Makanach", image: "/Ken Ya Makanach/4ec51146-5426-4b46-8afe-c79e7f55e2a3 - copia.jpeg" },
     { id: 2, title: "Fragment of live", image: "/Fragment of live/poster_9231.jpg" },
-    { id: 3, title: "Jo Malon", image: "/Jo Malon/IMG-20251105-WA0003.jpg" },
+    { id: 3, title: "Jo Malon", image: "/Jo Malon/IMG-20251105-WA0008.jpg" },
     { id: 4, title: "Le bout de la mer", image: "/Le bout de la mer/1716370780_acb2e67a1544cc4032c7_large.jpg" },
     { id: 5, title: "Lucidream", image: "/Lucidream/1.png" },
     { id: 6, title: "May B", image: "/may b/475442515_924754456445662_3822544371269994327_n.jpg" },
@@ -29,7 +29,7 @@ function HomeContent() {
     { id: 17, title: "Tanit", image: "/images/tanit-thumbnail.jpg" },
     { id: 18, title: "La Maison Dorée", image: "/La Maison Dorée/cover.jpg" },
     { id: 19, title: "Salla Salla", image: "Salla Salla/cover.jpg" },
-    { id: 20, title: "Spot Coca Cola Marroc", image: "/placeholder.svg" },
+    { id: 20, title: "Spot Coca Cola Marroc", image: "/cocacola/Captura de pantalla 2026-02-11 140915.png" },
     { id: 21, title: "Spot Suzuki", image: "/placeholder.svg" },
     { id: 22, title: "Spot Selja", image: "/placeholder.svg" },
     { id: 23, title: "Golden Coffee TVC1", image: "/placeholder.svg" },
