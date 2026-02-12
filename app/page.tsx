@@ -34,8 +34,8 @@ function HomeContent() {
     { id: 22, title: "Spot Selja", image: "/Selja/Captura de pantalla 2026-02-12 113225.png" },
     { id: 23, title: "Golden Coffee TVC1", image: "/golden Coffee Tvc 1/Captura de pantalla 2026-02-12 113936.png" },
     { id: 24, title: "Golden Coffee 2023", image: "/golde caffe 2023/Captura de pantalla 2026-02-12 115304.png" },
-    { id: 25, title: "Spot Al Mazraa 2023", image: "/placeholder.svg" },
-    { id: 26, title: "Orange 2022", image: "/placeholder.svg" },
+    { id: 25, title: "Spot Al Mazraa 2023", image: "/mazraa/Captura de pantalla 2026-02-12 121835.png" },
+    { id: 26, title: "Orange 2022", image: "/orange 2022/Captura de pantalla 2026-02-12 120559.png" },
   ]
 
   // Mapping of categories to item titles
