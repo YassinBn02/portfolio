@@ -24,7 +24,7 @@ function BackButtonContent() {
             className="flex items-center text-foreground hover:text-foreground/80 transition-colors mr-4"
         >
             <ArrowLeft className="w-6 h-6 mr-2" />
-            Retour
+            Back
         </Link>
     )
 }
