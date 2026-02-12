@@ -29,9 +29,9 @@ export default function AboutPage() {
                     {/* Content Section */}
                     <div className="space-y-8">
                         <div className="space-y-2">
-                            <h2 className="text-sm uppercase tracking-[0.3em] text-primary font-medium">À propos</h2>
+                            <h2 className="text-sm uppercase tracking-[0.3em] text-primary font-medium">About</h2>
                             <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground">
-                                Emna Bouaoun <span className="text-primary/70">Carrasco</span>
+                                Emna Bouaoun Carrasco
                             </h1>
                             <div className="h-1 w-20 bg-primary mt-4" />
                         </div>
