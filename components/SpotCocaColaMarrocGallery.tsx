@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Play, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface GalleryModalProps {
@@ -93,7 +93,7 @@ export default function SpotCocaColaMarrocGallery() {
         director: "Mourad Kalai",
         producer: "Linea Prod",
         role: "Wardrobe Assistant",
-        trailerUrl: "https://vimeo.com/1051120185",
+        videoUrl: "/cocacola/coca_cola_maroc_tvc_v1 (1080p).mp4",
     };
 
     const images = [
@@ -125,19 +125,14 @@ export default function SpotCocaColaMarrocGallery() {
                     </p>
                 </div>
 
-                {projectInfo.trailerUrl && (
-                    <div className="my-8 text-center">
-                        <a
-                            href={projectInfo.trailerUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full hover:opacity-90 transition-opacity font-medium"
-                        >
-                            <Play className="w-4 h-4" fill="currentColor" />
-                            Watch Spot on Vimeo
-                        </a>
-                    </div>
-                )}
+                <div className="w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden bg-black shadow-2xl">
+                    <video
+                        src={projectInfo.videoUrl}
+                        controls
+                        className="w-full h-full"
+                        poster={getImageUrl("Captura de pantalla 2026-02-11 140944.png")}
+                    />
+                </div>
 
                 <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
                     <p>Produced by: {projectInfo.producer}</p>
