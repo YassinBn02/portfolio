@@ -20,7 +20,7 @@ export default function HomeGalleryMenu({ items, activeCategory, onSelect }: Pro
       <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
         {items.map((item) => (
           <li key={item.id}>
-            {item.title === "About" ? (
+            {item.href && item.href !== "#" ? (
               <Link
                 href={item.href}
                 className="text-sm md:text-base font-medium text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase"
@@ -31,8 +31,8 @@ export default function HomeGalleryMenu({ items, activeCategory, onSelect }: Pro
               <button
                 onClick={() => onSelect?.(item.title)}
                 className={`text-sm md:text-base font-medium transition-colors tracking-wide uppercase ${activeCategory === item.title
-                    ? "text-foreground font-bold border-b-2 border-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                  ? "text-foreground font-bold border-b-2 border-primary"
+                  : "text-muted-foreground hover:text-foreground"
                   }`}
               >
                 {item.title}

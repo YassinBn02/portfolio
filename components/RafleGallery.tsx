@@ -96,6 +96,7 @@ export default function RafleGallery() {
     year: "2024",
     director: "Rabii Takeli",
     role: "Costume designer",
+    production: "Darc Entertainment",
     instagramTrailerUrl: "https://www.instagram.com/p/DGlM7eDt_ns/",
     youtubeTrailerUrl: "https://www.youtube.com/embed/PSawwfyU3wY",
   };
@@ -180,6 +181,7 @@ export default function RafleGallery() {
         )}
 
         <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Produced By: {projectInfo.production}</p>
           <p>Role: {projectInfo.role}</p>
         </div>
       </div>

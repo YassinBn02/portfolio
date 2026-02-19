@@ -98,7 +98,7 @@ export default function PortfolioCard({ item, category }: PortfolioCardProps) {
           src={item.image || "/placeholder.svg"}
           alt={item.title}
           fill
-          className={`absolute inset-0 w-full h-full ${item.title === "Le bout de la mer" || item.title === "Lucidream" || item.title === "Spot Coca Cola Marroc" || item.title === "Spot Suzuki" || item.title === "Spot Selja" || item.title === "Golden Coffee TVC1" || item.title === "Golden Coffee 2023" || item.title === "Orange 2022" || item.title === "Spot Al Mazraa 2023" ? "object-contain bg-black" : "object-cover"} transition-transform duration-300 group-hover:scale-110`}
+          className={`absolute inset-0 w-full h-full ${item.title === "Le bout de la mer" || item.title === "Lucidream" ? "object-contain bg-black" : "object-cover"} transition-transform duration-300 group-hover:scale-110`}
         />
       </div>
 
@@ -110,7 +110,7 @@ export default function PortfolioCard({ item, category }: PortfolioCardProps) {
         <h3 className="text-white font-semibold text-lg mb-2 text-balance">{item.title}</h3>
         <div className="flex items-center gap-2" suppressHydrationWarning>
           <Play className="w-4 h-4 text-accent fill-accent" />
-          <span className="text-sm text-white/80">Voir détails</span>
+          <span className="text-sm text-white/80">See details</span>
         </div>
       </div>
 

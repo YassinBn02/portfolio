@@ -69,6 +69,7 @@ function HomeContent() {
             { id: 4, title: "Theater", href: "#" },
             { id: 5, title: "Commercials", href: "#" },
             { id: 6, title: "About", href: "/about" },
+            { id: 7, title: "CV", href: "/cv" },
           ]}
         />
       </div>

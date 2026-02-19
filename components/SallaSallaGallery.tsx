@@ -93,6 +93,7 @@ export default function SallaSallaGallery() {
         year: "2024",
         director: "Mohamed Ali Mihoub",
         role: "Costume Designer",
+        production: "Crescendo",
         trailerUrl: "https://www.youtube.com/embed/qeVzwTkLCSM",
     };
 
@@ -156,6 +157,7 @@ export default function SallaSallaGallery() {
                     )}
 
                     <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+                        <p>Produced By: {projectInfo.production}</p>
                         <p>Role: {projectInfo.role}</p>
                     </div>
                 </div>
@@ -196,6 +198,7 @@ export default function SallaSallaGallery() {
                 )}
 
                 <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+                    <p>Produced By: {projectInfo.production}</p>
                     <p>Role: {projectInfo.role}</p>
                 </div>
             </div>

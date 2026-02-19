@@ -143,7 +143,7 @@ export default function JoMalonGallery() {
         )}
 
         <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
-          <p>Agency: {projectInfo.agency}</p>
+          <p>Produced By: {projectInfo.agency}</p>
           <p>Role: {projectInfo.role}</p>
         </div>
       </div>

@@ -93,6 +93,7 @@ export default function KenYaMakanachGallery() {
     title: "KEN YA MAKENCH",
     director: "Abdelhamid Bouchnak",
     role: "Wardrobe assistant",
+    production: "Cinétéléfilms",
     trailerUrl: "https://www.youtube.com/embed/vIGSxxnQvrc",
   };
 
@@ -154,6 +155,7 @@ export default function KenYaMakanachGallery() {
         )}
 
         <div className="flex flex-col items-center space-y-1 text-sm md:text-base text-muted-foreground uppercase tracking-wide">
+          <p>Produced By: {projectInfo.production}</p>
           <p>Role: {projectInfo.role}</p>
         </div>
       </div>
